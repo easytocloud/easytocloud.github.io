@@ -1,0 +1,168 @@
+---
+layout: default
+title: Contact Us
+permalink: /contact/
+---
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1 class="text-center mb-5">Get In Touch</h1>
+      <p class="lead text-center mb-5">Ready to accelerate your cloud journey? We'd love to hear from you.</p>
+      
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card shadow">
+            <div class="card-body p-4">
+              <h4 class="card-title mb-4">Send us a Message</h4>
+              <form>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" required>
+                  </div>
+                </div>
+                
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="company" class="form-label">Company</label>
+                    <input type="text" class="form-control" id="company">
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="subject" class="form-label">Subject</label>
+                  <select class="form-select" id="subject" required>
+                    <option value="">Choose a topic...</option>
+                    <option value="migration">Cloud Migration</option>
+                    <option value="devops">DevOps & Automation</option>
+                    <option value="security">Security & Compliance</option>
+                    <option value="optimization">Cost Optimization</option>
+                    <option value="training">Training & Consulting</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Tell us about your cloud challenges and goals..." required></textarea>
+                </div>
+                
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="newsletter" checked>
+                  <label class="form-check-label" for="newsletter">
+                    Subscribe to our newsletter for the latest cloud insights
+                  </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                  <i class="fas fa-paper-plane me-2"></i>Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card bg-primary text-white h-100">
+            <div class="card-body p-4">
+              <h5 class="card-title">Contact Information</h5>
+              
+              <div class="mb-4">
+                <h6><i class="fas fa-envelope me-2"></i>Email</h6>
+                <p class="mb-0">hello@easytocloud.com</p>
+              </div>
+              
+              <div class="mb-4">
+                <h6><i class="fas fa-phone me-2"></i>Phone</h6>
+                <p class="mb-0">+1 (555) 123-4567</p>
+              </div>
+              
+              <div class="mb-4">
+                <h6><i class="fas fa-map-marker-alt me-2"></i>Office</h6>
+                <p class="mb-0">
+                  123 Cloud Street<br>
+                  Tech City, TC 12345<br>
+                  United States
+                </p>
+              </div>
+              
+              <div class="mb-4">
+                <h6><i class="fas fa-clock me-2"></i>Business Hours</h6>
+                <p class="mb-0">
+                  Monday - Friday<br>
+                  9:00 AM - 6:00 PM EST
+                </p>
+              </div>
+              
+              <div>
+                <h6>Follow Us</h6>
+                <div class="d-flex gap-3">
+                  <a href="#" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="text-white fs-4"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="text-center">
+            <h3>Frequently Asked Questions</h3>
+            <div class="accordion mt-4" id="faqAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq1">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                    How long does a typical cloud migration take?
+                  </button>
+                </h2>
+                <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Migration timelines vary depending on the complexity and size of your environment. Simple migrations can take 2-4 weeks, while enterprise-scale migrations may take 6-12 months. We provide detailed project timelines during our initial assessment.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                    Do you support all major cloud platforms?
+                  </button>
+                </h2>
+                <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Yes, we have certified expertise across AWS, Microsoft Azure, and Google Cloud Platform. We can help you choose the right platform for your needs or work with your existing cloud provider.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                    What's included in your ongoing support?
+                  </button>
+                </h2>
+                <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Our ongoing support includes 24/7 monitoring, regular cost optimization reviews, security assessments, performance tuning, and access to our team for technical questions and guidance.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

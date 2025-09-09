@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" fill="none">
+  <!-- Cloud background -->
+  <ellipse cx="50" cy="50" rx="35" ry="20" fill="#0066cc" opacity="0.2"/>
+  <ellipse cx="70" cy="40" rx="30" ry="18" fill="#28a745" opacity="0.2"/>
+  <ellipse cx="40" cy="35" rx="25" ry="15" fill="#17a2b8" opacity="0.2"/>
+  
+  <!-- Main cloud shape -->
+  <path d="M20 45 C20 35, 30 30, 40 35 C45 25, 60 25, 65 35 C75 30, 85 35, 85 45 C85 55, 75 60, 65 55 L40 55 C30 60, 20 55, 20 45Z" fill="#0066cc"/>
+  
+  <!-- Highlight on cloud -->
+  <ellipse cx="50" cy="40" rx="15" ry="8" fill="#ffffff" opacity="0.3"/>
+  
+  <!-- Arrow pointing up (transformation) -->
+  <path d="M55 65 L55 50 M50 55 L55 50 L60 55" stroke="#28a745" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Text "EasyToCloud" -->
+  <text x="105" y="30" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#0066cc">Easy</text>
+  <text x="140" y="30" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="400" fill="#28a745">To</text>
+  <text x="160" y="30" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#17a2b8">Cloud</text>
+  
+  <!-- Tagline -->
+  <text x="105" y="50" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6c757d">Simplifying Cloud Adoption</text>
+</svg>

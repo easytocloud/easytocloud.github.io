@@ -1,0 +1,75 @@
+<section class="hero-section bg-primary text-white">
+  <div class="container py-5">
+    <div class="row align-items-center min-vh-50">
+      <div class="col-lg-6">
+        <h1 class="display-4 fw-bold mb-4">Simplify Your Cloud Journey</h1>
+        <p class="lead mb-4">
+          EasyToCloud provides expert guidance, automation tools, and best practices to transform your business with comprehensive cloud solutions. From migration to optimization, we make cloud adoption seamless.
+        </p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="/blog/" class="btn btn-light btn-lg">
+            <i class="fas fa-book-open me-2"></i>Explore Blog
+          </a>
+          <a href="/contact/" class="btn btn-outline-light btn-lg">
+            <i class="fas fa-envelope me-2"></i>Get Started
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="text-center">
+          <img src="{{ '/assets/images/easytocloud-logo.svg' | relative_url }}" alt="EasyToCloud Logo" class="img-fluid hero-logo">
+          <div class="hero-animation mt-4">
+            <i class="fas fa-cloud fa-3x text-white-50 float-animation"></i>
+            <i class="fas fa-server fa-2x text-white-50 float-animation" style="animation-delay: 0.5s;"></i>
+            <i class="fas fa-database fa-2x text-white-50 float-animation" style="animation-delay: 1s;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Carousel Section -->
+  <div class="container-fluid px-0">
+    <div id="featuresCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="carousel-content bg-primary-subtle text-dark py-4">
+            <div class="container text-center">
+              <h3><i class="fas fa-cloud-upload-alt me-2"></i>Cloud Migration</h3>
+              <p class="mb-0">Seamlessly migrate your infrastructure to the cloud with our proven methodologies and expert guidance.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-content bg-success-subtle text-dark py-4">
+            <div class="container text-center">
+              <h3><i class="fas fa-cogs me-2"></i>Automation & DevOps</h3>
+              <p class="mb-0">Streamline your operations with intelligent automation tools and DevOps best practices.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-content bg-info-subtle text-dark py-4">
+            <div class="container text-center">
+              <h3><i class="fas fa-shield-alt me-2"></i>Security & Compliance</h3>
+              <p class="mb-0">Ensure your cloud infrastructure meets the highest security standards and compliance requirements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#featuresCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#featuresCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
