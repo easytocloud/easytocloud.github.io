@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="cloudX - Modern remote development met VSCode en AWS EC2. De natuurlijke opvolger van AWS Cloud9.">
+    <title>cloudX - Remote Development Opnieuw Uitgevonden</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <span class="logo">cloud<span class="logo-x">X</span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">Hoe werkt het</a></li>
+                <li><a href="#getting-started">Aan de slag</a></li>
+                <li><a href="https://github.com/easytocloud/cloudX-proxy" target="_blank" rel="noopener" class="btn-secondary">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Remote Development<br>
+                    <span class="gradient-text">Opnieuw Uitgevonden</span>
+                </h1>
+                <p class="hero-subtitle">
+                    cloudX is de moderne opvolger van AWS Cloud9. Gebruik je lokale VSCode 
+                    met de kracht van AWS EC2 instances voor naadloze remote development.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#getting-started" class="btn-primary">Aan de slag</a>
+                    <a href="https://github.com/easytocloud/cloudX-proxy" target="_blank" rel="noopener" class="btn-outline">
+                        Bekijk op GitHub
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="architecture-diagram">
+                    <div class="arch-node local">
+                        <div class="node-icon">💻</div>
+                        <div class="node-label">VSCode Lokaal</div>
+                    </div>
+                    <div class="connection-line"></div>
+                    <div class="arch-node proxy">
+                        <div class="node-icon">🔐</div>
+                        <div class="node-label">cloudX-proxy</div>
+                    </div>
+                    <div class="connection-line"></div>
+                    <div class="arch-node cloud">
+                        <div class="node-icon">☁️</div>
+                        <div class="node-label">EC2 Instance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Waarom cloudX?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Automatisch Starten</h3>
+                    <p>Gestopte instances worden automatisch opgestart wanneer je verbinding maakt. Bespaar kosten zonder gedoe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Veilig & Privaat</h3>
+                    <p>Werk met instances in private netwerken via AWS Systems Manager. Geen publieke IPs nodig.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔑</div>
+                    <h3>Dynamische Keys</h3>
+                    <p>SSH keys worden automatisch gedistribueerd via EC2 Instance Connect. Veilig en tijdelijk.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Naadloze Integratie</h3>
+                    <p>Werkt perfect met je bestaande VSCode setup, extensies en workflow.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Cross-platform</h3>
+                    <p>Ondersteuning voor Windows, macOS en Linux. Één tool, overal werken.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>1Password Support</h3>
+                    <p>Integratie met 1Password SSH agent voor veilig key management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Hoe werkt het?</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>IAM User Setup</h3>
+                        <p>Een IAM user wordt aangemaakt met precies de juiste permissions voor cloudX. Deze credentials worden lokaal opgeslagen.</p>
+                        <div class="tech-badge">AWS IAM</div>
+                        <div class="tech-badge">ABAC</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>EC2 Instance</h3>
+                        <p>Een EC2 instance met de juiste tags en IAM role. Beschikbaar via Service Catalog voor eenvoudige deployment.</p>
+                        <div class="tech-badge">EC2</div>
+                        <div class="tech-badge">SSM Agent</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>cloudX-proxy</h3>
+                        <p>De proxy handelt SSH verbindingen af via Systems Manager Session Manager plugin. Start instances automatisch op.</p>
+                        <div class="tech-badge">Session Manager</div>
+                        <div class="tech-badge">SSH Tunnel</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3>VSCode Connect</h3>
+                        <p>VSCode maakt verbinding via de SSH config. Volledig transparant, alsof je lokaal werkt.</p>
+                        <div class="tech-badge">Remote SSH</div>
+                        <div class="tech-badge">VSCode</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Diagram Section -->
+    <section class="architecture">
+        <div class="container">
+            <h2 class="section-title">Architectuur Overzicht</h2>
+            <div class="arch-container">
+                <div class="arch-column">
+                    <div class="arch-box user-device">
+                        <h4>💻 Jouw Device</h4>
+                        <ul>
+                            <li>VSCode met Remote SSH</li>
+                            <li>cloudX-proxy (uvx)</li>
+                            <li>AWS CLI credentials</li>
+                            <li>SSH keys (optioneel 1Password)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="arch-arrow">
+                    <svg viewBox="0 0 100 100" class="arrow-svg">
+                        <path d="M 10 50 L 90 50" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M 75 35 L 90 50 L 75 65" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="arrow-label">SSH via SSM</span>
+                </div>
+
+                <div class="arch-column">
+                    <div class="arch-box aws-cloud">
+                        <h4>☁️ AWS Cloud</h4>
+                        <ul>
+                            <li>EC2 Instance (private subnet)</li>
+                            <li>SSM Agent</li>
+                            <li>IAM Role (SSM, CodeArtifact)</li>
+                            <li>Security via tags (ABAC)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="arch-benefits">
+                <div class="benefit">
+                    <span class="benefit-icon">✓</span>
+                    <span>Geen publieke IPs of Security Groups nodig</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">✓</span>
+                    <span>Volledige audit trail via CloudTrail</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">✓</span>
+                    <span>Instance auto-start bij verbinding</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started Section -->
+    <section id="getting-started" class="getting-started">
+        <div class="container">
+            <h2 class="section-title">Aan de slag in 3 stappen</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Installeer Prerequisites</h3>
+                    <div class="code-block">
+                        <code># Python 3.9+, AWS CLI v2, Session Manager plugin
+pip install uv</code>
+                    </div>
+                    <p>Zorg dat je Python, AWS CLI en de Session Manager plugin hebt geïnstalleerd.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Setup cloudX-proxy</h3>
+                    <div class="code-block">
+                        <code># Basic setup met prompts
+uvx cloudx-proxy setup
+
+# Of volledig geautomatiseerd
+uvx cloudx-proxy setup \
+  --profile myprofile \
+  --instance i-1234567890abcdef0 \
+  --hostname myserver \
+  --yes</code>
+                    </div>
+                    <p>De setup configureerd automatisch je AWS profiel, SSH keys en VSCode instellingen.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Verbind met VSCode</h3>
+                    <div class="code-block">
+                        <code>{
+  "remote.SSH.configFile": "~/.ssh/vscode/config",
+  "remote.SSH.connectTimeout": 90
+}</code>
+                    </div>
+                    <p>Open VSCode Remote Explorer en verbind met je cloudx-{env}-{hostname}. De eerste keer duurt 2-3 minuten.</p>
+                </div>
+            </div>
+
+            <div class="advanced-features">
+                <h3>Geavanceerde opties</h3>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-icon-small">🔐</span>
+                        <div>
+                            <strong>1Password integratie</strong>
+                            <p>Gebruik <code>--1password</code> voor veilig key management in je 1Password vault</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon-small">🌍</span>
+                        <div>
+                            <strong>Multi-environment</strong>
+                            <p>Gebruik <code>--aws-env prod</code> voor verschillende AWS omgevingen</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon-small">📝</span>
+                        <div>
+                            <strong>Custom SSH config</strong>
+                            <p>Specificeer een eigen locatie met <code>--ssh-config</code></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Catalog Section -->
+    <section class="service-catalog">
+        <div class="container">
+            <h2 class="section-title">Service Catalog Producten</h2>
+            <div class="catalog-grid">
+                <div class="catalog-card">
+                    <div class="catalog-icon">👤</div>
+                    <h3>cloudX-user</h3>
+                    <p>Creëert een IAM user met de juiste permissions en naming conventions voor cloudX toegang.</p>
+                    <ul class="catalog-features">
+                        <li>ABAC gebaseerde toegang</li>
+                        <li>Correcte IAM groep membership</li>
+                        <li>Long-term credentials voor lokaal gebruik</li>
+                    </ul>
+                </div>
+                <div class="catalog-card">
+                    <div class="catalog-icon">🖥️</div>
+                    <h3>cloudX-instance</h3>
+                    <p>Deployt een EC2 instance met alle benodigde configuratie voor cloudX.</p>
+                    <ul class="catalog-features">
+                        <li>Pre-configured IAM role</li>
+                        <li>Juiste tags voor ABAC</li>
+                        <li>SSM Agent en bootstrap scripts</li>
+                        <li>CodeArtifact & CodeCommit access</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Klaar om te beginnen?</h2>
+            <p>Start vandaag nog met cloudX en ervaar moderne remote development.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/easytocloud/cloudX-proxy" target="_blank" rel="noopener" class="btn-primary">Bekijk op GitHub</a>
+                <a href="https://github.com/easytocloud/cloudX-proxy#readme" target="_blank" rel="noopener" class="btn-outline">Documentatie</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">cloud<span class="logo-x">X</span></span>
+                    <p>Modern remote development voor AWS</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#how-it-works">Hoe werkt het</a></li>
+                            <li><a href="#getting-started">Aan de slag</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="https://github.com/easytocloud/cloudX-proxy" target="_blank" rel="noopener">GitHub</a></li>
+                            <li><a href="https://github.com/easytocloud/cloudX-proxy#readme" target="_blank" rel="noopener">Documentatie</a></li>
+                            <li><a href="https://github.com/easytocloud/cloudX-proxy/issues" target="_blank" rel="noopener">Issues</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>easytocloud</h4>
+                        <ul>
+                            <li><a href="https://easytocloud.com" target="_blank" rel="noopener">Website</a></li>
+                            <li><a href="https://github.com/easytocloud" target="_blank" rel="noopener">GitHub Org</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 easytocloud. MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
