@@ -1,4 +1,61 @@
 // ============================================
+// Dark Mode Toggle
+// ============================================
+const darkModeToggle = document.getElementById('darkModeToggle');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or use system preference
+const getSavedTheme = () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        return savedTheme;
+    }
+    // Check system preference
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+// Set initial theme
+const currentTheme = getSavedTheme();
+htmlElement.setAttribute('data-theme', currentTheme);
+
+// Dark mode toggle functionality
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+}
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    // Only auto-switch if user hasn't manually set a preference
+    if (!localStorage.getItem('theme')) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        htmlElement.setAttribute('data-theme', newTheme);
+    }
+});
+
+// ============================================
+// Language Detection & Translations
+// ============================================
+const getLanguage = () => {
+    const path = window.location.pathname;
+    if (path.includes('/nl/')) return 'nl';
+    if (path.includes('/en/')) return 'en';
+    return 'nl'; // default
+};
+
+// Update copy button text based on language
+const currentLang = getLanguage();
+const copyTexts = {
+    nl: { copy: '📋 Kopieer', copied: '✓ Gekopieerd!' },
+    en: { copy: '📋 Copy', copied: '✓ Copied!' }
+};
+
+// ============================================
 // Scroll Animations
 // ============================================
 const observerOptions = {
@@ -74,7 +131,7 @@ document.querySelectorAll('.code-block').forEach((codeBlock) => {
     // Create copy button
     const copyButton = document.createElement('button');
     copyButton.className = 'copy-button';
-    copyButton.innerHTML = '📋 Kopieer';
+    copyButton.innerHTML = copyTexts[currentLang].copy;
     copyButton.style.cssText = `
         position: absolute;
         top: 10px;
@@ -89,30 +146,30 @@ document.querySelectorAll('.code-block').forEach((codeBlock) => {
         transition: all 0.2s;
         opacity: 0;
     `;
-    
+
     // Make code block container relative for absolute positioning
     codeBlock.style.position = 'relative';
     codeBlock.appendChild(copyButton);
-    
+
     // Show button on hover
     codeBlock.addEventListener('mouseenter', () => {
         copyButton.style.opacity = '1';
     });
-    
+
     codeBlock.addEventListener('mouseleave', () => {
         copyButton.style.opacity = '0';
     });
-    
+
     // Copy functionality
     copyButton.addEventListener('click', async () => {
         const code = codeBlock.querySelector('code').textContent;
         try {
             await navigator.clipboard.writeText(code);
-            copyButton.innerHTML = '✓ Gekopieerd!';
+            copyButton.innerHTML = copyTexts[currentLang].copied;
             copyButton.style.background = 'rgba(34, 197, 94, 0.3)';
-            
+
             setTimeout(() => {
-                copyButton.innerHTML = '📋 Kopieer';
+                copyButton.innerHTML = copyTexts[currentLang].copy;
                 copyButton.style.background = 'rgba(255, 255, 255, 0.1)';
             }, 2000);
         } catch (err) {
