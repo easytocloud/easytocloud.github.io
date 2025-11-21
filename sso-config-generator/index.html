@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSO Config Generator - AWS SSO at Scale</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <a href="/">
+                    <img src="../assets/easytocloud-logo-dark.png" alt="easytocloud" class="nav-logo-img">
+                </a>
+            </div>
+
+            <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+                <div class="hamburger"></div>
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#usage">Usage</a></li>
+                <li><a href="#links">Links</a></li>
+                <li>
+                    <a href="https://github.com/easytocloud/sso-config-generator" target="_blank" rel="noopener" aria-label="View on GitHub">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li><a href="/" class="btn-outline">All products</a></li>
+                <li class="nav-controls">
+                    <button id="darkModeToggle" class="icon-btn" aria-label="Toggle dark mode" title="Dark mode">
+                        <span class="icon-light">☀️</span>
+                        <span class="icon-dark">🌙</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">SSO Config Generator</h1>
+                    <p class="hero-subtitle">
+                        A Python CLI tool that turns complex AWS SSO setups into
+                        clean CLI profiles and a navigable directory structure for
+                        multi-account organizations.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#usage" class="btn-primary">Get started</a>
+                        <a href="https://github.com/easytocloud/sso-config-generator" target="_blank" rel="noopener" class="btn-outline">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem" class="features">
+            <div class="container">
+                <h2 class="section-title">The problem it solves</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Too many accounts and roles</h3>
+                        <p>
+                            In large AWS Organizations, developers often have access to
+                            dozens of accounts and roles. Manually managing SSO profiles
+                            and switching between them becomes time-consuming and error-prone.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Hard to navigate environments</h3>
+                        <p>
+                            Even if SSO is configured correctly, there is usually no
+                            consistent directory structure that mirrors your OU layout,
+                            making it difficult to keep workspaces organized.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Context switching costs</h3>
+                        <p>
+                            Switching roles by hand, exporting profiles, and remembering
+                            the right account/role combination slows developers down and
+                            increases the chance of using the wrong environment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="architecture">
+            <div class="container">
+                <h2 class="section-title">How SSO Config Generator helps</h2>
+                <div class="arch-container">
+                    <div class="arch-column">
+                        <div class="arch-box user-device">
+                            <h4>Generates AWS CLI profiles</h4>
+                            <ul>
+                                <li>Creates one profile per role you have via AWS SSO</li>
+                                <li>Profiles follow the pattern <code>&lt;RoleName&gt;@&lt;AccountName&gt;</code></li>
+                                <li>Updates <code>~/.aws/config</code> using a managed block</li>
+                                <li>Respects existing non-SSO configuration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="arch-column">
+                        <div class="arch-box aws-cloud">
+                            <h4>Creates directory structures</h4>
+                            <ul>
+                                <li>Mirrors your AWS OU hierarchy (optional)</li>
+                                <li>Creates one directory per account under a unified root</li>
+                                <li>Adds <code>.envrc</code> files for each account to set <code>AWS_PROFILE</code></li>
+                                <li>Optional <code>repos.md</code> scaffolding per account</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-benefits">
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Single command to refresh SSO profiles</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Automatic OU caching and fast reruns</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Cloud9/cloudX aware for smooth integration</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="usage" class="getting-started">
+            <div class="container">
+                <h2 class="section-title">Quick start</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Prerequisites</h3>
+                        <p>Make sure you have:</p>
+                        <ul>
+                            <li>Python 3.8 or higher</li>
+                            <li>AWS CLI v2</li>
+                            <li>AWS SSO configured with a <code>sso-browser</code> profile</li>
+                            <li>Optional: <code>direnv</code> for automatic profile switching</li>
+                        </ul>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Install & configure</h3>
+                        <div class="code-block">
+<code>pip install sso-config-generator
+
+# or use uvx without installing
+uvx sso-config-generator
+
+# ensure AWS SSO is configured and logged in
+aws configure sso
+aws sso login --profile sso-browser</code>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Generate profiles & directories</h3>
+                        <div class="code-block">
+<code># Basic usage (profiles + directories)
+uvx sso-config-generator
+
+# Flat directory layout
+uvx sso-config-generator --no-use-ou-structure
+
+# Custom root and role name
+uvx sso-config-generator \
+  --unified-root ~/aws-environments \
+  --developer-role-name ReadOnlyAccess
+
+# Validate existing configuration only
+uvx sso-config-generator --validate</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="links" class="aws-deployment">
+            <div class="container">
+                <h2 class="section-title">Resources</h2>
+                <p class="section-subtitle">
+                    SSO Config Generator is maintained as an open source project by easytocloud.
+                </p>
+                <div class="deployment-flow">
+                    <div class="deployment-step">
+                        <div class="deployment-card">
+                            <div class="deployment-icon">📦</div>
+                            <h4>Project links</h4>
+                            <ul>
+                                <li><a href="https://github.com/easytocloud/sso-config-generator" target="_blank" rel="noopener">GitHub repository</a></li>
+                                <li><a href="https://pypi.org/project/sso-config-generator/" target="_blank" rel="noopener">PyPI package</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="deployment-step">
+                        <div class="deployment-card">
+                            <div class="deployment-icon">↩️</div>
+                            <h4>Back to easytocloud</h4>
+                            <p>Explore cloudX and Mac-letterhead on the main products page.</p>
+                            <a href="/" class="btn-primary">Back to overview</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+</html>

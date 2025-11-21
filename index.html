@@ -3,228 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="cloudX - Modern remote development with VSCode and AWS EC2. The natural successor to AWS Cloud9.">
-    <title>cloudX - Remote Development Reimagined</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .redirect-container {
-            text-align: center;
-            background: white;
-            padding: 60px 40px;
-            border-radius: 16px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            max-width: 500px;
-        }
-
-        .logo {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #111827;
-        }
-
-        .logo-x {
-            color: #FF6B35;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            color: #374151;
-            margin-bottom: 16px;
-        }
-
-        p {
-            color: #6B7280;
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .lang-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        .lang-btn {
-            padding: 14px 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            border: 2px solid #FF6B35;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 250ms ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .lang-btn.primary {
-            background: #FF6B35;
-            color: white;
-        }
-
-        .lang-btn.primary:hover {
-            background: #E85A2A;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .lang-btn.secondary {
-            background: transparent;
-            color: #FF6B35;
-        }
-
-        .lang-btn.secondary:hover {
-            background: #FF6B35;
-            color: white;
-        }
-
-        .spinner {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            border: 5px solid #E5E7EB;
-            border-radius: 50%;
-            border-top-color: #FF6B35;
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .auto-redirect {
-            display: none;
-        }
-
-        .auto-redirect.active {
-            display: block;
-        }
-
-        @media (max-width: 480px) {
-            .redirect-container {
-                padding: 40px 24px;
-            }
-
-            .logo {
-                font-size: 2rem;
-            }
-
-            .lang-buttons {
-                flex-direction: column;
-            }
-
-            .lang-btn {
-                width: 100%;
-            }
-        }
-    </style>
+    <meta name="description" content="easytocloud - Open tools for AWS developers, including cloudX, SSO Config Generator, and Mac-letterhead.">
+    <title>easytocloud - AWS Developer Tools</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <div class="redirect-container">
-        <div class="logo">cloud<span class="logo-x">X</span></div>
-
-        <!-- Auto redirect message -->
-        <div class="auto-redirect" id="autoRedirect">
-            <div class="spinner"></div>
-            <h1 id="redirectTitle">Redirecting...</h1>
-            <p id="redirectMessage">Automatically redirecting based on your browser language...</p>
-        </div>
-
-        <!-- Manual selection -->
-        <div id="manualSelection">
-            <h1>Choose your language / Kies je taal</h1>
-            <p>Select your preferred language to continue<br>Selecteer je voorkeurstaal om door te gaan</p>
-            <div class="lang-buttons">
-                <a href="./nl/" class="lang-btn primary">Nederlands</a>
-                <a href="./en/" class="lang-btn secondary">English</a>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <a href="/">
+                    <img src="./assets/easytocloud-logo-dark.png" alt="easytocloud" class="nav-logo-img">
+                </a>
             </div>
-        </div>
-    </div>
+            
+            <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+                <div class="hamburger"></div>
+            </button>
 
-    <script>
-        // Detect browser language
-        const getBrowserLanguage = () => {
-            const lang = navigator.language || navigator.userLanguage;
-            const languageCode = lang.toLowerCase().split(/[_-]+/)[0];
-            return languageCode;
-        };
+            <ul class="nav-menu">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li>
+                    <a href="https://github.com/easytocloud" target="_blank" rel="noopener" aria-label="easytocloud on GitHub">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-controls">
+                    <button id="darkModeToggle" class="icon-btn" aria-label="Toggle dark mode" title="Dark mode">
+                        <span class="icon-light">☀️</span>
+                        <span class="icon-dark">🌙</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-        // Check if we should auto-redirect
-        const shouldAutoRedirect = () => {
-            // Check if user has visited before
-            const hasVisited = localStorage.getItem('cloudx-visited');
-            return !hasVisited;
-        };
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Tools for AWS developers</h1>
+                    <p class="hero-subtitle">
+                        easytocloud builds focused, open tools that make working with AWS
+                        more enjoyable: modern remote development, SSO profile management,
+                        and professional document workflows.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn-primary">Explore products</a>
+                        <a href="https://easytocloud.com" target="_blank" rel="noopener" class="btn-outline">Visit easytocloud.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        // Redirect to appropriate language
-        const redirectToLanguage = (lang) => {
-            localStorage.setItem('cloudx-visited', 'true');
-            localStorage.setItem('cloudx-lang', lang);
+        <section id="products" class="features">
+            <div class="container">
+                <h2 class="section-title">Products</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">☁️</div>
+                        <h3>cloudX</h3>
+                        <p>
+                            A modern successor to AWS Cloud9: use your local VS Code with
+                            secure, auto-starting EC2 instances via Systems Manager.
+                        </p>
+                        <a href="cloudX/en/" class="btn-outline">Learn more</a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔐</div>
+                        <h3>SSO Config Generator</h3>
+                        <p>
+                            Generate AWS CLI SSO profiles and directory structures that
+                            mirror your AWS Organization, complete with <code>.envrc</code>
+                            files for easy role switching.
+                        </p>
+                        <a href="/sso-config-generator/" class="btn-outline">Learn more</a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📄</div>
+                        <h3>Mac-letterhead</h3>
+                        <p>
+                            A macOS utility and MCP server for applying letterhead designs
+                            to PDFs and Markdown, ideal for branded client deliverables and
+                            AI-generated documents.
+                        </p>
+                        <a href="/mac-letterhead/" class="btn-outline">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            const targetLang = lang === 'nl' ? 'nl' : 'en';
-            window.location.href = `./${targetLang}/`;
-        };
+        <section id="about" class="architecture">
+            <div class="container">
+                <h2 class="section-title">About easytocloud</h2>
+                <div class="arch-container">
+                    <div class="arch-column">
+                        <div class="arch-box user-device">
+                            <h4>Independent tools</h4>
+                            <ul>
+                                <li>Focused, practical utilities for AWS developers</li>
+                                <li>Designed to integrate into existing workflows</li>
+                                <li>Open source and iterated in the open</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="arch-column">
+                        <div class="arch-box aws-cloud">
+                            <h4>Cloud-native mindset</h4>
+                            <ul>
+                                <li>Built around AWS best practices and security</li>
+                                <li>Optimized for multi-account and SSO setups</li>
+                                <li>Ready for both human and AI-driven workflows</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align:center; margin-top:32px;">
+                    For background and consulting information, visit
+                    <a href="https://easytocloud.com" target="_blank" rel="noopener">easytocloud.com</a>.
+                </p>
+            </div>
+        </section>
+    </main>
 
-        // Auto-redirect logic
-        if (shouldAutoRedirect()) {
-            const browserLang = getBrowserLanguage();
-            const autoRedirect = document.getElementById('autoRedirect');
-            const manualSelection = document.getElementById('manualSelection');
-
-            // Show auto-redirect message
-            autoRedirect.classList.add('active');
-            manualSelection.style.display = 'none';
-
-            // Update message based on detected language
-            if (browserLang === 'nl') {
-                document.getElementById('redirectTitle').textContent = 'Doorverwijzen...';
-                document.getElementById('redirectMessage').textContent = 'Automatisch doorverwijzen op basis van je browsertaal...';
-            }
-
-            // Redirect after 1.5 seconds
-            setTimeout(() => {
-                redirectToLanguage(browserLang);
-            }, 1500);
-        } else {
-            // Show manual selection for returning visitors
-            const savedLang = localStorage.getItem('cloudx-lang') || getBrowserLanguage();
-            // Optionally suggest the saved language by highlighting it
-            const primaryBtn = document.querySelector('.lang-btn.primary');
-            const secondaryBtn = document.querySelector('.lang-btn.secondary');
-
-            if (savedLang === 'en') {
-                primaryBtn.textContent = 'English';
-                primaryBtn.href = './en/';
-                secondaryBtn.textContent = 'Nederlands';
-                secondaryBtn.href = './nl/';
-            }
-        }
-
-        // Track manual language selection
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const href = btn.getAttribute('href');
-                const lang = href.includes('/nl/') ? 'nl' : 'en';
-                localStorage.setItem('cloudx-visited', 'true');
-                localStorage.setItem('cloudx-lang', lang);
-            });
-        });
-    </script>
+    <script src="./script.js"></script>
 </body>
 </html>

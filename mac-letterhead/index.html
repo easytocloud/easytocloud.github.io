@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac-letterhead - Professional Letterheaded PDFs</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <a href="/">
+                    <img src="../assets/easytocloud-logo-dark.png" alt="easytocloud" class="nav-logo-img">
+                </a>
+            </div>
+
+            <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+                <div class="hamburger"></div>
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="#what">What it does</a></li>
+                <li><a href="#usage">Usage</a></li>
+                <li><a href="#ai">AI &amp; MCP</a></li>
+                <li><a href="#links">Links</a></li>
+                <li>
+                    <a href="https://github.com/easytocloud/Mac-letterhead" target="_blank" rel="noopener" aria-label="View on GitHub">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li><a href="/" class="btn-outline">All products</a></li>
+                <li class="nav-controls">
+                    <button id="darkModeToggle" class="icon-btn" aria-label="Toggle dark mode" title="Dark mode">
+                        <span class="icon-light">☀️</span>
+                        <span class="icon-dark">🌙</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Mac-letterhead</h1>
+                    <p class="hero-subtitle">
+                        A macOS utility that turns your letterhead PDF into drag-and-drop
+                        apps and CLI tools for creating professional, branded PDFs from
+                        existing PDFs or Markdown.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#usage" class="btn-primary">Get started</a>
+                        <a href="https://github.com/easytocloud/Mac-letterhead" target="_blank" rel="noopener" class="btn-outline">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="what" class="features">
+            <div class="container">
+                <h2 class="section-title">What Mac-letterhead does</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Letterhead apps for macOS</h3>
+                        <p>
+                            Create drag-and-drop applications that automatically apply your
+                            company letterhead to PDFs or Markdown documents. Drop a file
+                            on the app, get a professional PDF out.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Markdown to PDF</h3>
+                        <p>
+                            Convert Markdown into beautifully formatted PDFs that respect
+                            your letterhead margins, typography, and branding. Supports
+                            tables, code blocks, lists, and GitHub Flavored Markdown when
+                            available.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Advanced rendering pipeline</h3>
+                        <p>
+                            Uses WeasyPrint for high-quality HTML+CSS rendering when
+                            system libraries are available, and ReportLab as a pure-Python
+                            fallback. Both paths are covered by an extensive test suite.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="usage" class="getting-started">
+            <div class="container">
+                <h2 class="section-title">Quick start on macOS</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Requirements</h3>
+                        <ul>
+                            <li>macOS</li>
+                            <li>Python 3.10 or higher</li>
+                            <li><code>uv</code> package manager</li>
+                            <li>Optional (WeasyPrint): <code>brew install pango cairo fontconfig freetype harfbuzz</code></li>
+                        </ul>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Create a letterhead app</h3>
+                        <div class="code-block">
+<code># Basic application using ~/.letterhead/company.pdf
+uvx mac-letterhead install --name "company"
+
+# Use custom letterhead and CSS
+uvx mac-letterhead install \
+  --name "Technical Reports" \
+  --letterhead /path/to/letterhead.pdf \
+  --css /path/to/styles.css</code>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Use from the command line</h3>
+                        <div class="code-block">
+<code># Merge a PDF with letterhead
+uvx mac-letterhead merge letterhead.pdf "Output" ~/Desktop document.pdf
+
+# Render Markdown to a letterheaded PDF
+uvx mac-letterhead merge-md letterhead.pdf "Output" ~/Desktop document.md</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai" class="aws-deployment">
+            <div class="container">
+                <h2 class="section-title">AI &amp; MCP integration</h2>
+                <p class="section-subtitle">
+                    Mac-letterhead ships with an MCP (Model Context Protocol) server so AI
+                    tools like Claude can generate letterheaded PDFs directly from
+                    natural language prompts.
+                </p>
+                <div class="deployment-flow">
+                    <div class="deployment-step">
+                        <div class="deployment-card">
+                            <div class="deployment-icon">🤖</div>
+                            <h4>Start the MCP server</h4>
+                            <div class="code-block">
+<code># Generic multi-style server
+uvx mac-letterhead[mcp] mcp
+
+# Dedicated single-style server
+uvx mac-letterhead[mcp] mcp \
+  --style easytocloud \
+  --output-dir ~/Documents/generated-pdfs</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="deployment-step">
+                        <div class="deployment-card">
+                            <div class="deployment-icon">🛠️</div>
+                            <h4>Available tools (high level)</h4>
+                            <ul>
+                                <li><code>create_letterhead_pdf</code> – render Markdown as a letterheaded PDF</li>
+                                <li><code>merge_letterhead_pdf</code> – apply letterhead to existing PDFs</li>
+                                <li><code>analyze_letterhead</code> – inspect margins and printable areas</li>
+                                <li><code>list_letterhead_templates</code> – list available styles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="links" class="architecture">
+            <div class="container">
+                <h2 class="section-title">Resources &amp; use cases</h2>
+                <div class="arch-container">
+                    <div class="arch-column">
+                        <div class="arch-box user-device">
+                            <h4>Project links</h4>
+                            <ul>
+                                <li><a href="https://github.com/easytocloud/Mac-letterhead" target="_blank" rel="noopener">GitHub repository</a></li>
+                                <li><a href="https://pypi.org/project/Mac-letterhead/" target="_blank" rel="noopener">PyPI package</a></li>
+                                <li><a href="https://registry.modelcontextprotocol.io/servers/io.github.easytocloud/mac-letterhead" target="_blank" rel="noopener">MCP registry entry</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="arch-column">
+                        <div class="arch-box aws-cloud">
+                            <h4>Typical use cases</h4>
+                            <ul>
+                                <li>Corporate and legal correspondence</li>
+                                <li>Invoices, financial statements, and reports</li>
+                                <li>Technical documentation from Markdown sources</li>
+                                <li>AI-generated reports formatted with company branding</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-benefits">
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Keeps branding consistent across all PDFs</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Works with both manual workflows and AI tools</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Backed by automated tests and semantic-release</span>
+                    </div>
+                </div>
+                <p style="text-align:center; margin-top:32px;">
+                    <a href="/" class="btn-primary">Back to easytocloud overview</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="cloudX - Modern remote development met VSCode en AWS EC2. De natuurlijke opvolger van AWS Cloud9.">
+    <title>cloudX - Remote Development Opnieuw Uitgevonden</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body data-lang="nl">
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <a href="/">
+                    <img src="../../assets/easytocloud-logo-dark.png" alt="easytocloud" class="nav-logo-img">
+                </a>
+            </div>
+
+            <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+                <div class="hamburger"></div>
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">Hoe werkt het</a></li>
+                <li><a href="#getting-started">Client Setup</a></li>
+                <li><a href="#aws-deployment">AWS Deployment</a></li>
+                <li>
+                    <a href="https://github.com/easytocloud/cloudX-proxy" target="_blank" rel="noopener" aria-label="View on GitHub">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li><a href="/" class="btn-outline">Alle producten</a></li>
+                <li class="nav-controls">
+                    <button id="darkModeToggle" class="icon-btn" aria-label="Toggle dark mode" title="Dark mode">
+                        <span class="icon-light">☀️</span>
+                        <span class="icon-dark">🌙</span>
+                    </button>
+                    <div class="lang-switcher">
+                        <a href="../nl/" class="lang-link active" data-lang="nl">NL</a>
+                        <span class="lang-sep">|</span>
+                        <a href="../en/" class="lang-link" data-lang="en">EN</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Remote Development<br>
+                    <span class="gradient-text">Opnieuw Uitgevonden</span>
+                </h1>
+                <p class="hero-subtitle">
+                    cloudX is de moderne opvolger van AWS Cloud9. Gebruik je lokale VSCode 
+                    met de kracht van AWS EC2 instances voor naadloze remote development.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#getting-started" class="btn-primary">Aan de slag</a>
+                    <a href="https://github.com/easytocloud/cloudX-proxy" target="_blank" rel="noopener" class="btn-outline">
+                        Bekijk op GitHub
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="architecture-diagram">
+                    <div class="arch-node local">
+                        <div class="node-icon">💻</div>
+                        <div class="node-label">VSCode Lokaal</div>
+                    </div>
+                    <div class="connection-line"></div>
+                    <div class="arch-node proxy">
+                        <div class="node-icon">🔐</div>
+                        <div class="node-label">cloudX-proxy</div>
+                    </div>
+                    <div class="connection-line"></div>
+                    <div class="arch-node cloud">
+                        <div class="node-icon">☁️</div>
+                        <div class="node-label">EC2 Instance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Waarom cloudX?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Automatisch Starten</h3>
+                    <p>Gestopte instances worden automatisch opgestart wanneer je verbinding maakt. Bespaar kosten zonder gedoe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Veilig & Privaat</h3>
+                    <p>Werk met instances in private netwerken via AWS Systems Manager. Geen publieke IPs nodig.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔑</div>
+                    <h3>Dynamische Keys</h3>
+                    <p>SSH keys worden automatisch gedistribueerd via EC2 Instance Connect. Veilig en tijdelijk.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Naadloze Integratie</h3>
+                    <p>Werkt perfect met je bestaande VSCode setup, extensies en workflow.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Cross-platform</h3>
+                    <p>Ondersteuning voor Windows, macOS en Linux. Één tool, overal werken.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>1Password Support</h3>
+                    <p>Integratie met 1Password SSH agent voor veilig key management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Hoe werkt het?</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>IAM User Setup</h3>
+                        <p>Een IAM user wordt aangemaakt met precies de juiste permissions voor cloudX. Deze credentials worden lokaal opgeslagen.</p>
+                        <div class="tech-badge">AWS IAM</div>
+                        <div class="tech-badge">ABAC</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>EC2 Instance</h3>
+                        <p>Een EC2 instance met de juiste tags en IAM role. Beschikbaar via Service Catalog voor eenvoudige deployment.</p>
+                        <div class="tech-badge">EC2</div>
+                        <div class="tech-badge">SSM Agent</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>cloudX-proxy</h3>
+                        <p>De proxy handelt SSH verbindingen af via Systems Manager Session Manager plugin. Start instances automatisch op.</p>
+                        <div class="tech-badge">Session Manager</div>
+                        <div class="tech-badge">SSH Tunnel</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3>VSCode Connect</h3>
+                        <p>VSCode maakt verbinding via de SSH config. Volledig transparant, alsof je lokaal werkt.</p>
+                        <div class="tech-badge">Remote SSH</div>
+                        <div class="tech-badge">VSCode</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Diagram Section -->
+    <section class="architecture">
+        <div class="container">
+            <h2 class="section-title">Architectuur Overzicht</h2>
+            <div class="arch-container">
+                <div class="arch-column">
+                    <div class="arch-box user-device">
+                        <h4>💻 Jouw Device</h4>
+                        <ul>
+                            <li>VSCode met Remote SSH</li>
+                            <li>cloudX-proxy (uvx)</li>
+                            <li>AWS CLI credentials</li>
+                            <li>SSH keys (optioneel 1Password)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="arch-arrow">
+                    <svg viewBox="0 0 100 100" class="arrow-svg">
+                        <path d="M 10 50 L 90 50" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M 75 35 L 90 50 L 75 65" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="arrow-label">SSH via SSM</span>
+                </div>
+
+                <div class="arch-column">
+                    <div class="arch-box aws-cloud">
+                        <h4>☁️ AWS Cloud</h4>
+                        <ul>
+                            <li>EC2 Instance (private subnet)</li>
+                            <li>SSM Agent</li>
+                            <li>IAM Role (SSM, CodeArtifact)</li>
+                            <li>Security via tags (ABAC)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="arch-benefits">
+                <div class="benefit">
+                    <span class="benefit-icon">✓</span>
+                    <span>Geen publieke IPs of Security Groups nodig</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">✓</span>
+                    <span>Volledige audit trail via CloudTrail</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">✓</span>
+                    <span>Instance auto-start bij verbinding</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started Section -->
+    <section id="getting-started" class="getting-started">
+        <div class="container">
+            <h2 class="section-title">Aan de slag in 3 stappen</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Installeer Prerequisites</h3>
+                    <div class="code-block">
+                        <code># Python 3.9+, AWS CLI v2, Session Manager plugin
+pip install uv</code>
+                    </div>
+                    <p>Zorg dat je Python, AWS CLI en de Session Manager plugin hebt geïnstalleerd.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Setup cloudX-proxy</h3>
+                    <div class="code-block">
+                        <code># Basic setup met prompts
+uvx cloudX-proxy setup
+
+# Of volledig geautomatiseerd
+uvx cloudX-proxy setup \
+  --profile myprofile \
+  --instance i-1234567890abcdef0 \
+  --hostname myserver \
+  --yes</code>
+                    </div>
+                    <p>De setup configureerd automatisch je AWS profiel, SSH keys en VSCode instellingen.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Verbind met VSCode</h3>
+                    <div class="code-block">
+                        <code>{
+  "remote.SSH.configFile": "~/.ssh/vscode/config",
+  "remote.SSH.connectTimeout": 90
+}</code>
+                    </div>
+                    <p>Open VSCode Remote Explorer en verbind met je cloudX-{env}-{hostname}. De eerste keer duurt 2-3 minuten.</p>
+                </div>
+            </div>
+
+            <div class="advanced-features">
+                <h3>Geavanceerde opties</h3>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-icon-small">🔐</span>
+                        <div>
+                            <strong>1Password integratie</strong>
+                            <p>Gebruik <code>--1password</code> voor veilig key management in je 1Password vault</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon-small">🌍</span>
+                        <div>
+                            <strong>Multi-environment</strong>
+                            <p>Gebruik <code>--aws-env prod</code> voor verschillende AWS omgevingen</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon-small">📝</span>
+                        <div>
+                            <strong>Custom SSH config</strong>
+                            <p>Specificeer een eigen locatie met <code>--ssh-config</code></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AWS Deployment Section -->
+    <section id="aws-deployment" class="aws-deployment">
+        <div class="container">
+            <h2 class="section-title">AWS Deployment</h2>
+            <p class="section-subtitle">
+                De server-side van cloudX draait op AWS en kan met CloudFormation templates worden uitgerold.
+                Een klik en je infrastructure is klaar.
+            </p>
+
+            <div class="deployment-flow">
+                <div class="deployment-step">
+                    <div class="step-header">
+                        <span class="step-badge">Stap 1</span>
+                        <h3>Environment Setup</h3>
+                    </div>
+                    <div class="deployment-card">
+                        <div class="deployment-icon">🏗️</div>
+                        <h4>cloudX-environment</h4>
+                        <p class="deployment-desc">Deploy eenmalig per omgeving (Dev, Test, Prod)</p>
+                        <div class="what-it-creates">
+                            <strong>Wat wordt er aangemaakt:</strong>
+                            <ul>
+                                <li>IAM Instance Profile met SSM toegang</li>
+                                <li>Security Group voor instance networking</li>
+                                <li>IAM Group met ABAC policies</li>
+                                <li>Parameter Store configuratie</li>
+                            </ul>
+                        </div>
+                        <div class="deployment-params">
+                            <strong>Parameters:</strong>
+                            <div class="param-grid">
+                                <div class="param">
+                                    <code>EnvironmentName</code>
+                                    <span>bv. "OTA", "Prod", "Dev"</span>
+                                </div>
+                                <div class="param">
+                                    <code>Subnet</code>
+                                    <span>VPC subnet ID voor instances</span>
+                                </div>
+                                <div class="param">
+                                    <code>SSODomain</code>
+                                    <span>AWS SSO domain</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=cloudX-environment&templateURL=https://cloudx-public.s3.amazonaws.com/templates/cloudX-environment.yaml"
+                           target="_blank" rel="noopener" class="btn-deploy">
+                            <img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="deployment-arrow-down">⬇</div>
+
+                <div class="deployment-step">
+                    <div class="step-header">
+                        <span class="step-badge">Stap 2</span>
+                        <h3>Instance Deployment</h3>
+                    </div>
+                    <div class="deployment-card">
+                        <div class="deployment-icon">🖥️</div>
+                        <h4>cloudX-instance</h4>
+                        <p class="deployment-desc">Deploy per developer per omgeving</p>
+                        <div class="what-it-creates">
+                            <strong>Wat wordt er aangemaakt:</strong>
+                            <ul>
+                                <li>EC2 instance met Amazon Linux 2023</li>
+                                <li>Automatische software installatie (UserData)</li>
+                                <li>ABAC tags voor permissions</li>
+                                <li>SSM-enabled voor veilige verbindingen</li>
+                            </ul>
+                        </div>
+                        <div class="deployment-params">
+                            <strong>Parameters:</strong>
+                            <div class="param-grid">
+                                <div class="param">
+                                    <code>UserName</code>
+                                    <span>bv. "erik", "john"</span>
+                                </div>
+                                <div class="param">
+                                    <code>EnvironmentName</code>
+                                    <span>Bestaande environment</span>
+                                </div>
+                                <div class="param">
+                                    <code>InstanceType</code>
+                                    <span>default: t3.large</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="software-selection">
+                            <strong>Software Packages:</strong>
+                            <div class="software-badges">
+                                <span class="badge recommended">UV</span>
+                                <span class="badge recommended">BREW</span>
+                                <span class="badge recommended">ZSH</span>
+                                <span class="badge recommended">SSO</span>
+                                <span class="badge optional">Docker</span>
+                                <span class="badge optional">NVM</span>
+                                <span class="badge optional">Anaconda</span>
+                            </div>
+                        </div>
+                        <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=cloudX-instance&templateURL=https://cloudx-public.s3.amazonaws.com/templates/cloudX-instance.yaml"
+                           target="_blank" rel="noopener" class="btn-deploy">
+                            <img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="deployment-arrow-down">⬇</div>
+
+                <div class="deployment-step">
+                    <div class="step-header">
+                        <span class="step-badge">Stap 3</span>
+                        <span class="optional-badge">Optioneel</span>
+                        <h3>User Setup</h3>
+                    </div>
+                    <div class="deployment-card optional">
+                        <div class="deployment-icon">👤</div>
+                        <h4>cloudX-user</h4>
+                        <p class="deployment-desc">Alleen nodig als dedicated IAM credentials gewenst zijn</p>
+                        <div class="what-it-creates">
+                            <strong>Wat wordt er aangemaakt:</strong>
+                            <ul>
+                                <li>IAM user: cloudX-{Env}-{Name}</li>
+                                <li>Membership in environment IAM group</li>
+                                <li>Access key pair (automatisch)</li>
+                                <li>Credentials in Parameter Store</li>
+                            </ul>
+                        </div>
+                        <div class="deployment-params">
+                            <strong>Parameters:</strong>
+                            <div class="param-grid">
+                                <div class="param">
+                                    <code>UserName</code>
+                                    <span>Zelfde als instance</span>
+                                </div>
+                                <div class="param">
+                                    <code>EnvironmentName</code>
+                                    <span>Bestaande environment</span>
+                                </div>
+                                <div class="param">
+                                    <code>EmailAddress</code>
+                                    <span>Voor notificaties (opt.)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="deployment-note">
+                            <span class="note-icon">ℹ️</span>
+                            <p>Niet nodig als developers al IAM/SSO permissions hebben. ABAC policies matchen op username format.</p>
+                        </div>
+                        <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=cloudX-user&templateURL=https://cloudx-public.s3.amazonaws.com/templates/cloudX-user.yaml"
+                           target="_blank" rel="noopener" class="btn-deploy">
+                            <img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="multi-environment-info">
+                <h3>🌍 Multi-Environment Support</h3>
+                <p>cloudX ondersteunt meerdere geïsoleerde omgevingen binnen één AWS account. Elke environment heeft zijn eigen:</p>
+                <div class="environment-features">
+                    <div class="env-feature">
+                        <span class="env-icon">🔐</span>
+                        <span>VPC subnet voor instance placement</span>
+                    </div>
+                    <div class="env-feature">
+                        <span class="env-icon">👥</span>
+                        <span>IAM group met ABAC permissions</span>
+                    </div>
+                    <div class="env-feature">
+                        <span class="env-icon">🛡️</span>
+                        <span>Security group configuratie</span>
+                    </div>
+                    <div class="env-feature">
+                        <span class="env-icon">⚙️</span>
+                        <span>SSO domain instellingen</span>
+                    </div>
+                </div>
+                <p class="environment-use-cases">
+                    Perfect voor het scheiden van development, testing en productie, of voor geïsoleerde workspaces per team of project.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Klaar om te beginnen?</h2>
+            <p>Start vandaag nog met cloudX en ervaar moderne remote development.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/easytocloud/cloudX-proxy" target="_blank" rel="noopener" class="btn-primary">Bekijk op GitHub</a>
+                <a href="https://github.com/easytocloud/cloudX-proxy#readme" target="_blank" rel="noopener" class="btn-outline">Documentatie</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">cloud<span class="logo-x">X</span></span>
+                    <p>Modern remote development voor AWS</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#how-it-works">Hoe werkt het</a></li>
+                            <li><a href="#getting-started">Client Setup</a></li>
+                            <li><a href="#aws-deployment">AWS Deployment</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="https://github.com/easytocloud/cloudX-proxy" target="_blank" rel="noopener">Client (GitHub)</a></li>
+                            <li><a href="https://github.com/easytocloud/cloudX" target="_blank" rel="noopener">Server (GitHub)</a></li>
+                            <li><a href="https://github.com/easytocloud/cloudX-proxy#readme" target="_blank" rel="noopener">Documentatie</a></li>
+                            <li><a href="https://github.com/easytocloud/cloudX-proxy/issues" target="_blank" rel="noopener">Issues</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>easytocloud</h4>
+                        <ul>
+                            <li><a href="https://easytocloud.com" target="_blank" rel="noopener">Website</a></li>
+                            <li><a href="https://github.com/easytocloud" target="_blank" rel="noopener">GitHub Org</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 easytocloud. MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
