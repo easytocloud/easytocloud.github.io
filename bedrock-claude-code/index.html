@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code Personae - Switchable Claude Code Configurations</title>
+    <meta name="description" content="A VS Code extension for managing Claude Code configurations through composable, reusable presets. Switch between Anthropic Direct, AWS Bedrock, and local models without touching a JSON file.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <a href="/">
+                    <img src="../assets/easytocloud-logo-dark.png" alt="easytocloud" class="nav-logo-img">
+                </a>
+            </div>
+
+            <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+                <div class="hamburger"></div>
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="#what">What it does</a></li>
+                <li><a href="#how">How it works</a></li>
+                <li><a href="#usage">Get started</a></li>
+                <li><a href="#links">Links</a></li>
+                <li>
+                    <a href="https://github.com/easytocloud/bedrock-claude-code" target="_blank" rel="noopener" aria-label="View on GitHub">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li><a href="/" class="btn-outline">All products</a></li>
+                <li class="nav-controls">
+                    <button id="darkModeToggle" class="icon-btn" aria-label="Toggle dark mode" title="Dark mode">
+                        <span class="icon-light">☀️</span>
+                        <span class="icon-dark">🌙</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Claude Code Personae</h1>
+                    <p class="hero-subtitle">
+                        A VS Code extension for managing Claude Code configurations through
+                        composable, reusable presets. Switch between Anthropic Direct,
+                        AWS Bedrock, and local models without touching a single JSON file.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#usage" class="btn-primary">Get started</a>
+                        <a href="https://marketplace.visualstudio.com/items?itemName=easytocloud.bedrock-claude-code" target="_blank" rel="noopener" class="btn-outline">View on Marketplace</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="product-screenshot">
+                        <img src="./screenshot.png" alt="Claude Code Personae settings panel in VS Code" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="what" class="features">
+            <div class="container">
+                <h2 class="section-title">What Claude Code Personae does</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Composable presets</h3>
+                        <p>
+                            Build configurations from three building blocks — Providers,
+                            MCP Server Groups, and Directory Groups — then combine them
+                            into named presets you can switch in seconds. No more
+                            hunting through JSON to change a model or endpoint.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Any backend, one interface</h3>
+                        <p>
+                            Use Anthropic Direct for everyday work, AWS Bedrock for
+                            enterprise compliance or cost control, or a local model via
+                            Ollama, vLLM, or LM Studio — all managed from the same
+                            VS Code panel with live model discovery.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Global and workspace scopes</h3>
+                        <p>
+                            Apply presets globally or per workspace. Workspace scope
+                            can inherit from global, so project-specific overrides are
+                            easy and the extension keeps Claude Code's own config files
+                            in sync automatically on save.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how" class="architecture">
+            <div class="container">
+                <h2 class="section-title">How it works</h2>
+                <div class="arch-container">
+                    <div class="arch-column">
+                        <div class="arch-box user-device">
+                            <h4>Building blocks</h4>
+                            <ul>
+                                <li><strong>Providers</strong> — Anthropic Direct, AWS Bedrock, or any OpenAI-compatible proxy (Ollama, vLLM, LM Studio, OpenRouter, …)</li>
+                                <li><strong>MCP Server Groups</strong> — named collections of MCP servers (stdio, HTTP, SSE)</li>
+                                <li><strong>Directory Groups</strong> — additional directories Claude Code may access</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="arch-column">
+                        <div class="arch-box aws-cloud">
+                            <h4>Presets &amp; scopes</h4>
+                            <ul>
+                                <li>Bundle a provider + any groups into a switchable <strong>preset</strong></li>
+                                <li>Assign to <strong>Global</strong> scope (writes <code>~/.claude/settings.json</code>) or <strong>Workspace</strong> scope (writes <code>.claude/settings.json</code>)</li>
+                                <li>One-click switch via the status bar — no panel required</li>
+                                <li>All config stored in <code>~/.claude/coder-profiles.json</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-benefits">
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Filterable dropdowns for AWS profiles and model lists — handles 500+ OpenRouter models comfortably</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Import / export presets to share with teammates — credentials scrubbed on export</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Standalone mode blocks all Anthropic traffic for fully offline local model use</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="usage" class="getting-started">
+            <div class="container">
+                <h2 class="section-title">Get started in minutes</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Install the extension</h3>
+                        <p>
+                            Open VS Code Quick Open
+                            (<code>Ctrl+P</code> / <code>⌘P</code>), paste the command
+                            below, and press Enter. Requires VS Code 1.98 or later.
+                        </p>
+                        <div class="code-block">
+<code>ext install easytocloud.bedrock-claude-code</code>
+                        </div>
+                        <p>Or search for <strong>Claude Code Personae</strong> in the Extensions view.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Create your first preset</h3>
+                        <ol>
+                            <li>Open Command Palette → <strong>Open Claude Code Settings</strong></li>
+                            <li>Create a <strong>Provider</strong> — pick Anthropic Direct, AWS Bedrock, or a proxy</li>
+                            <li>Optionally add <strong>MCP Server Groups</strong> or <strong>Directory Groups</strong></li>
+                            <li>Create a <strong>Preset</strong> that bundles them together</li>
+                            <li>Assign the preset to <strong>Global</strong> or <strong>Workspace</strong> scope</li>
+                            <li>Click <strong>Save All</strong></li>
+                        </ol>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Switch on the fly</h3>
+                        <p>
+                            Click the status bar item at the bottom of VS Code to
+                            switch presets for global or workspace scope without
+                            opening the full settings panel.
+                        </p>
+                        <p>
+                            For AWS Bedrock, click <strong>Fetch models from AWS</strong>
+                            to discover all inference profiles and foundation models
+                            available in your account.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="links" class="architecture">
+            <div class="container">
+                <h2 class="section-title">Resources &amp; links</h2>
+                <div class="arch-container">
+                    <div class="arch-column">
+                        <div class="arch-box user-device">
+                            <h4>Project links</h4>
+                            <ul>
+                                <li><a href="https://marketplace.visualstudio.com/items?itemName=easytocloud.bedrock-claude-code" target="_blank" rel="noopener">VS Code Marketplace</a></li>
+                                <li><a href="https://github.com/easytocloud/bedrock-claude-code" target="_blank" rel="noopener">GitHub repository</a></li>
+                                <li><a href="https://github.com/easytocloud/bedrock-claude-code/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="arch-column">
+                        <div class="arch-box aws-cloud">
+                            <h4>Typical use cases</h4>
+                            <ul>
+                                <li>Switch to AWS Bedrock for teams with enterprise compliance or cost controls</li>
+                                <li>Run fully offline with a local Ollama or vLLM model</li>
+                                <li>Share a standard preset with your team via import/export</li>
+                                <li>Override the global provider per workspace without touching config files</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-benefits">
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Free and open source — maintained by easytocloud</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>All config in one file, resolved into Claude Code's own settings on save</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">✓</span>
+                        <span>Requires VS Code 1.98 or later — no other dependencies</span>
+                    </div>
+                </div>
+                <p style="text-align:center; margin-top:32px;">
+                    <a href="/" class="btn-primary">Back to easytocloud overview</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+</html>

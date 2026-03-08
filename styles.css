@@ -373,6 +373,54 @@ img {
     position: relative;
 }
 
+/* Product Screenshot in Hero */
+.product-screenshot {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--gray-200);
+    animation: slideInRight 0.8s ease-out;
+    position: relative;
+}
+
+.product-screenshot::before {
+    content: '';
+    display: block;
+    background: linear-gradient(180deg, var(--gray-200) 0%, var(--gray-100) 100%);
+    height: 28px;
+    border-bottom: 1px solid var(--gray-300);
+    background-image: radial-gradient(circle at 18px 14px, #ff5f57 5px, transparent 5px),
+                      radial-gradient(circle at 36px 14px, #ffbd2e 5px, transparent 5px),
+                      radial-gradient(circle at 54px 14px, #28c840 5px, transparent 5px);
+}
+
+.product-screenshot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    object-position: top;
+}
+
+[data-theme="dark"] .product-screenshot {
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .product-screenshot::before {
+    background: linear-gradient(180deg, #2a2a2e 0%, #1e1e22 100%);
+    border-bottom-color: var(--border-color);
+    background-image: radial-gradient(circle at 18px 14px, #ff5f57 5px, transparent 5px),
+                      radial-gradient(circle at 36px 14px, #ffbd2e 5px, transparent 5px),
+                      radial-gradient(circle at 54px 14px, #28c840 5px, transparent 5px);
+}
+
+@media (max-width: 1024px) {
+    .product-screenshot img {
+        max-height: 300px;
+    }
+}
+
 .architecture-diagram {
     display: flex;
     align-items: center;
@@ -482,6 +530,110 @@ img {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 32px;
+}
+
+/* ============================================
+   Products Carousel (homepage)
+   ============================================ */
+.products-carousel-wrapper {
+    position: relative;
+}
+
+.products-carousel-wrapper::before,
+.products-carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.products-carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+
+.products-carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
+[data-theme="dark"] .products-carousel-wrapper::before {
+    background: linear-gradient(to right, var(--bg-primary), transparent);
+}
+
+[data-theme="dark"] .products-carousel-wrapper::after {
+    background: linear-gradient(to left, var(--bg-primary), transparent);
+}
+
+.products-carousel {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 12px 48px 28px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--gray-200);
+}
+
+.products-carousel::-webkit-scrollbar {
+    height: 4px;
+}
+
+.products-carousel::-webkit-scrollbar-track {
+    background: var(--gray-200);
+    border-radius: 4px;
+}
+
+.products-carousel::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+.products-carousel .feature-card {
+    min-width: 300px;
+    max-width: 320px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+}
+
+.products-carousel .feature-card p {
+    flex: 1;
+}
+
+.products-carousel .feature-card .btn-outline {
+    margin-top: 20px;
+    align-self: flex-start;
+}
+
+.carousel-hint {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+    .products-carousel {
+        padding: 12px 20px 28px;
+        gap: 20px;
+    }
+
+    .products-carousel .feature-card {
+        min-width: 260px;
+    }
+
+    .products-carousel-wrapper::before,
+    .products-carousel-wrapper::after {
+        width: 24px;
+    }
 }
 
 .feature-card {

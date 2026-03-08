@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="easytocloud - Open tools for AWS developers, including cloudX, SSO Config Generator, and Mac-letterhead.">
+    <meta name="description" content="easytocloud - Open tools for AWS developers, including cloudX, SSO Config Generator, Claude Code Personae, and Mac-letterhead.">
     <title>easytocloud - AWS Developer Tools</title>
     <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="stylesheet" href="./styles.css">
@@ -49,7 +49,7 @@
                     <p class="hero-subtitle">
                         easytocloud builds focused, open tools that make working with AWS
                         more enjoyable: modern remote development, SSO profile management,
-                        and professional document workflows.
+                        switchable Claude Code configurations, and professional document workflows.
                     </p>
                     <div class="hero-buttons">
                         <a href="#products" class="btn-primary">Explore products</a>
@@ -62,37 +62,50 @@
         <section id="products" class="features">
             <div class="container">
                 <h2 class="section-title">Products</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">☁️</div>
-                        <h3>cloudX</h3>
-                        <p>
-                            A modern successor to AWS Cloud9: use your local VS Code with
-                            secure, auto-starting EC2 instances via Systems Manager.
-                        </p>
-                        <a href="cloudX/en/" class="btn-outline">Learn more</a>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔐</div>
-                        <h3>SSO Config Generator</h3>
-                        <p>
-                            Generate AWS CLI SSO profiles and directory structures that
-                            mirror your AWS Organization, complete with <code>.envrc</code>
-                            files for easy role switching.
-                        </p>
-                        <a href="/sso-config-generator/" class="btn-outline">Learn more</a>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📄</div>
-                        <h3>Mac-letterhead</h3>
-                        <p>
-                            A macOS utility and MCP server for applying letterhead designs
-                            to PDFs and Markdown, ideal for branded client deliverables and
-                            AI-generated documents.
-                        </p>
-                        <a href="/mac-letterhead/" class="btn-outline">Learn more</a>
+                <div class="products-carousel-wrapper">
+                    <div class="products-carousel">
+                        <div class="feature-card">
+                            <div class="feature-icon">☁️</div>
+                            <h3>cloudX</h3>
+                            <p>
+                                A modern successor to AWS Cloud9: use your local VS Code with
+                                secure, auto-starting EC2 instances via Systems Manager.
+                            </p>
+                            <a href="cloudX/en/" class="btn-outline">Learn more</a>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎭</div>
+                            <h3>Claude Code Personae</h3>
+                            <p>
+                                A VS Code extension for managing Claude Code configurations
+                                through composable presets. Switch between Anthropic Direct,
+                                AWS Bedrock, and local models without editing JSON.
+                            </p>
+                            <a href="/bedrock-claude-code/" class="btn-outline">Learn more</a>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔐</div>
+                            <h3>SSO Config Generator</h3>
+                            <p>
+                                Generate AWS CLI SSO profiles and directory structures that
+                                mirror your AWS Organization, complete with <code>.envrc</code>
+                                files for easy role switching.
+                            </p>
+                            <a href="/sso-config-generator/" class="btn-outline">Learn more</a>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📄</div>
+                            <h3>Mac-letterhead</h3>
+                            <p>
+                                A macOS utility and MCP server for applying letterhead designs
+                                to PDFs and Markdown, ideal for branded client deliverables and
+                                AI-generated documents.
+                            </p>
+                            <a href="/mac-letterhead/" class="btn-outline">Learn more</a>
+                        </div>
                     </div>
                 </div>
+                <p class="carousel-hint">Scroll to explore &rarr;</p>
             </div>
         </section>
 
